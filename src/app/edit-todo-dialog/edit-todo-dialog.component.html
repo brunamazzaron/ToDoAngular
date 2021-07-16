@@ -1,0 +1,39 @@
+<h1 class="title">Editar ToDo</h1>
+<div mat-dialog-content>
+
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+        <div class="field">
+            <div class="control">
+                <input
+                    type="text"
+                    class="input"
+                    [ngModel]="todo.text"
+                    #todoTextField="ngModel"
+                    name="text"
+                    required
+                    minlength="2"
+                    placeholder="Escreva aqui....">
+            </div>
+
+            <div *ngIf="todoTextField.invalid">
+                <p class="help is-primary" *ngIf="todoTextField.errors.required">Preencha corretamente, não deixe o campo vazio</p>
+                <p class="help is-primary" *ngIf="todoTextField.errors.minlength">Descreva as tarefas</p>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="field is-grouped is-grouped-right">
+            <div class="control">
+                <button type="button" class="button is-light" (click)="close()">Cancelar</button>
+            </div>
+
+            <div class="control">
+                <button type="submit" class="button alt-gradient-button">
+                  <i class="far fa-save"> Salvar </i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
